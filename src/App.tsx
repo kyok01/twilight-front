@@ -16,9 +16,12 @@ function App() {
         </a>
         </div>
       </div>
+      <div className="gap-y-2">
+
       <Steps />
       <h1 className="text-2xl text-secondary font-bold">STEP1: GET ADDRESS</h1>
       <AddressReqForm />
+      </div>
     </div>
   );
 }
