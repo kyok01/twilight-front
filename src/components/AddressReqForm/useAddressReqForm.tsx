@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
-import { contractMaker } from "../../hooks/useProvider";
+import { makeAccountFactoryContract } from "../../utils/accountFactory";
 
 type UseAddressReqFormParams = {
   address: string;
@@ -14,7 +14,7 @@ export const useAddressReqForm = ({address, setAddress}: UseAddressReqFormParams
   }
 
   const handleClick = useCallback(async() => {
-    const {contract} = contractMaker();
+    const {contract} = makeAccountFactoryContract();
     const address = await contract.methods.getAddress('0xa4E1040705Cb9434D97A295079fe0442eE571456', inputValue).call();
     console.log(address);
     setAddress(address);

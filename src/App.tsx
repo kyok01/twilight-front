@@ -2,10 +2,12 @@ import { useState } from "react";
 import "./App.css";
 import { AddressReqForm } from "./components/AddressReqForm";
 import { Steps } from "./components/Steps";
+import { NameDomainForm } from "./components/NameDomainForm";
 
 function App() {
   const [step, setStep] = useState(1);
-  const [address, setAddress] = useState('')
+  const [address, setAddress] = useState('');
+  const [tokenId, setTokenId] = useState<number>();
   const titles = ['REQUEST ADDRESS', 'Register Domain', 'Complete'];
   
   return (
@@ -30,7 +32,12 @@ function App() {
         <h1 className="text-2xl text-secondary font-bold">
           {`STEP${step}: ${titles[step-1]}`}
         </h1>
+        {step === 1 &&
         <AddressReqForm setStep={setStep} address={address} setAddress={setAddress}/>
+        }
+        {step === 2 && 
+        <NameDomainForm address={address} setStep={setStep} setTokenId={setTokenId} />
+        }
       </div>
     </div>
   );
