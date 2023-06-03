@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { makeAccountFactoryContract } from "../../utils/accountFactory";
 
 type UseAddressReqFormParams = {
@@ -19,6 +19,7 @@ export const useAddressReqForm = ({address, setAddress}: UseAddressReqFormParams
     console.log(address);
     setAddress(address);
     return;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   return {inputValue, setInputValue, address, setAddress, handleClick, handleChange}

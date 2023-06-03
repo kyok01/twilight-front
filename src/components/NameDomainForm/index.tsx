@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useCallback, useState } from "react";
+import { memo, } from "react";
 
 type NameDomainFormProp = {
   address: string;

@@ -14,7 +14,7 @@ function App() {
     <div className="bg-neutral min-h-screen flex flex-col items-center">
       <div className="navbar bg-base-100 flex justify-center">
         <div>
-          <img className="max-h-10" src="/twilight-logo.png" />
+          <img className="max-h-10" src="/twilight-logo.png" alt="twilight"/>
         </div>
         <div>
           <a
