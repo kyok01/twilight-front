@@ -3,11 +3,13 @@ import "./App.css";
 import { AddressReqForm } from "./components/AddressReqForm";
 import { Steps } from "./components/Steps";
 import { NameDomainForm } from "./components/NameDomainForm";
+import { Completed } from "./components/Completed";
 
 function App() {
   const [step, setStep] = useState(1);
   const [address, setAddress] = useState('');
   const [tokenId, setTokenId] = useState<number>();
+  const [twitterId, setTwitterId] = useState<string>('');
   const titles = ['REQUEST ADDRESS', 'Register Domain', 'Complete'];
   
   return (
@@ -33,10 +35,13 @@ function App() {
           {`STEP${step}: ${titles[step-1]}`}
         </h1>
         {step === 1 &&
-        <AddressReqForm setStep={setStep} address={address} setAddress={setAddress}/>
+        <AddressReqForm setStep={setStep} address={address} setAddress={setAddress} setTwitterId={setTwitterId}/>
         }
         {step === 2 && 
-        <NameDomainForm address={address} setStep={setStep} setTokenId={setTokenId} />
+        <NameDomainForm address={address} setStep={setStep} setTokenId={setTokenId} twitterId={twitterId}/>
+        }
+        {step === 3 && 
+        <Completed />
         }
       </div>
     </div>

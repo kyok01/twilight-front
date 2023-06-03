@@ -1,19 +1,20 @@
-import { ChangeEvent, memo, useCallback, useState } from "react";
+import { memo, } from "react";
 import { useAddressReqForm } from "./useAddressReqForm";
 
 type AddressReqFormProp = {
   address: string;
   setAddress: React.Dispatch<React.SetStateAction<string>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  setTwitterId: React.Dispatch<React.SetStateAction<string>>;
 };
 export const AddressReqForm: React.FC<AddressReqFormProp> = memo(
-  ({ address, setAddress, setStep }) => {
+  ({ address, setAddress, setStep, setTwitterId }) => {
     const {
       inputValue,
       address: cAddress,
       handleClick,
       handleChange,
-    } = useAddressReqForm({ address, setAddress });
+    } = useAddressReqForm({ address, setAddress, setTwitterId });
 
     return (
       <div className="flex flex-col justify-center gap-y-4 items-center">
