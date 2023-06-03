@@ -1,8 +1,13 @@
+import { useState } from "react";
 import "./App.css";
 import { AddressReqForm } from "./components/AddressReqForm";
 import { Steps } from "./components/Steps";
 
 function App() {
+  const [step, setStep] = useState(1);
+  const [address, setAddress] = useState('')
+  const titles = ['REQUEST ADDRESS', 'Register Domain', 'Complete'];
+  
   return (
     <div className="bg-neutral min-h-screen flex flex-col items-center">
       <div className="navbar bg-base-100 flex justify-center">
@@ -20,12 +25,12 @@ function App() {
       </div>
       <div className="flex flex-col gap-y-8">
         <div className="mt-4">
-          <Steps />
+          <Steps step={step} stepNames={titles}/>
         </div>
         <h1 className="text-2xl text-secondary font-bold">
-          STEP1: REQUEST ADDRESS
+          {`STEP${step}: ${titles[step-1]}`}
         </h1>
-        <AddressReqForm />
+        <AddressReqForm setStep={setStep} address={address} setAddress={setAddress}/>
       </div>
     </div>
   );

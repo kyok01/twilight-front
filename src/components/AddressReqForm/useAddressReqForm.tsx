@@ -1,10 +1,14 @@
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { contractMaker } from "../../hooks/useProvider";
 
-export const useAddressReqForm = () => {
+type UseAddressReqFormParams = {
+  address: string;
+  setAddress: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const useAddressReqForm = ({address, setAddress}: UseAddressReqFormParams) => {
 
     const [inputValue, setInputValue] = useState<string>('');
-    const [address, setAddress] = useState('')
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
