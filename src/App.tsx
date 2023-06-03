@@ -41,7 +41,7 @@ function App() {
         <NameDomainForm address={address} setStep={setStep} setTokenId={setTokenId} twitterId={twitterId}/>
         }
         {step === 3 && 
-        <Completed />
+        <Completed twitterId={twitterId}/>
         }
       </div>
     </div>
