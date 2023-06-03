@@ -1,11 +1,9 @@
-
 export function Steps() {
-    return (
-        <ul className="steps steps-vertical lg:steps-horizontal">
-  <li className="step step-primary">Register</li>
-  <li className="step step-primary">Choose plan</li>
-  <li className="step">Purchase</li>
-  <li className="step">Receive Product</li>
-</ul>
-    )
+  return (
+    <ul className="steps steps-vertical lg:steps-horizontal">
+      <li className="step step-primary mr-4">Request Address</li>
+      <li className="step step-primary">Register Domain</li>
+      <li className="step">Complete</li>
+    </ul>
+  );
 }
