@@ -8,7 +8,6 @@ import { Completed } from "./components/Completed";
 function App() {
   const [step, setStep] = useState(1);
   const [address, setAddress] = useState('');
-  const [tokenId, setTokenId] = useState<number>();
   const [twitterId, setTwitterId] = useState<string>('');
   const titles = ['REQUEST ADDRESS', 'Register Domain', 'Complete'];
   
@@ -38,7 +37,7 @@ function App() {
         <AddressReqForm setStep={setStep} address={address} setAddress={setAddress} setTwitterId={setTwitterId}/>
         }
         {step === 2 && 
-        <NameDomainForm address={address} setStep={setStep} setTokenId={setTokenId} twitterId={twitterId}/>
+        <NameDomainForm address={address} setStep={setStep} twitterId={twitterId}/>
         }
         {step === 3 && 
         <Completed twitterId={twitterId}/>

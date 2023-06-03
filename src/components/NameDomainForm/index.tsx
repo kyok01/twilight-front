@@ -4,11 +4,10 @@ import { makeNameDomainContract } from "../../utils/nameDomain";
 type NameDomainFormProp = {
   address: string;
   twitterId: string;
-  setTokenId: React.Dispatch<React.SetStateAction<number | undefined>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 export const NameDomainForm: React.FC<NameDomainFormProp> = memo(
-  ({ address, twitterId, setTokenId, setStep }) => {
+  ({ address, twitterId, setStep }) => {
     
     const domain = `${twitterId}.twl`;
     const handleClick = async()=> {
