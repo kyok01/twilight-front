@@ -2,17 +2,21 @@ import { useState } from "react";
 import "./App.css";
 import { AddressReqForm } from "./components/AddressReqForm";
 import { Steps } from "./components/Steps";
+import { NameDomainForm } from "./components/NameDomainForm";
+import { Completed } from "./components/Completed";
 
 function App() {
   const [step, setStep] = useState(1);
-  const [address, setAddress] = useState('')
+  const [address, setAddress] = useState('');
+  const [tokenId, setTokenId] = useState<number>();
+  const [twitterId, setTwitterId] = useState<string>('');
   const titles = ['REQUEST ADDRESS', 'Register Domain', 'Complete'];
   
   return (
     <div className="bg-neutral min-h-screen flex flex-col items-center">
       <div className="navbar bg-base-100 flex justify-center">
         <div>
-          <img className="max-h-10" src="/twilight-logo.png" />
+          <img className="max-h-10" src="/twilight-logo.png" alt="twilight"/>
         </div>
         <div>
           <a
@@ -30,7 +34,15 @@ function App() {
         <h1 className="text-2xl text-secondary font-bold">
           {`STEP${step}: ${titles[step-1]}`}
         </h1>
-        <AddressReqForm setStep={setStep} address={address} setAddress={setAddress}/>
+        {step === 1 &&
+        <AddressReqForm setStep={setStep} address={address} setAddress={setAddress} setTwitterId={setTwitterId}/>
+        }
+        {step === 2 && 
+        <NameDomainForm address={address} setStep={setStep} setTokenId={setTokenId} twitterId={twitterId}/>
+        }
+        {step === 3 && 
+        <Completed />
+        }
       </div>
     </div>
   );
