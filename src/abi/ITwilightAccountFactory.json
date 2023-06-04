@@ -10,6 +10,11 @@
 				"internalType": "string",
 				"name": "username",
 				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "platfrom",
+				"type": "string"
 			}
 		],
 		"name": "getAddress",

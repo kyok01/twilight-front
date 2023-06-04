@@ -5,9 +5,9 @@ import {AbiItem} from "web3-utils/types"
 import abi from '../abi/ITwilightAccountFactory.json';
 
 export const makeAccountFactoryContract = () => {
-    const contractAddress = "0xaec061292b5d2bf1f94af9930cb1c3fea2564212";
+    const contractAddress = "0x5d9b258Dc16dB1aEf7250cBb9dBc8A47420CA484";
     const privateKey = process.env.REACT_APP_PRIVATE_KEY;
-    const providerUrl = process.env.REACT_APP_POLYGON_PROVIDER_URL;
+    const providerUrl = process.env.REACT_APP_MUMBAI_PROVIDER_URL;
 
     const hdWalletProvider = new HDWalletProvider({
         privateKeys: [privateKey as string],
