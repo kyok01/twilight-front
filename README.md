@@ -1,15 +1,16 @@
 ![logo](docs/PPWallet.png)
 
-# AirdropDAO - Account Abstraction Wallet for Airdrop
+# PPwallet - Account Abstraction Wallet to realize permissonless Payment
 
 ## Summary
-Airdrop DAO will onboard next 1 billion people.
-We realize super easy UX to have Wallet.
-We send Account Abstraction Wallet when user authorized some social account,
+PPWallet will onboard next 400 million people.
+We enable crypto-users to pay non-wallet holder token.
+We prepared Name Server as a gift towards non-crypto users.
 
 
-Presentation  movie:
+Presentatitoon  movie:
 https://youtu.be/vswHQAz6oKg
+youtube:
 
 Only demo(movie):
 https://www.loom.com/share/a97bf1139a2942a7965a9acdc448a35b
@@ -18,54 +19,65 @@ https://www.loom.com/share/a97bf1139a2942a7965a9acdc448a35b
 
 ## Problem
 
-It is very difficult to start crypto for web2 users.
+Overall Issue: Existing crypto transactions are limited to wallet holders 
+such as those with Metamask.
 
-- If you become interested in crypto, you need to set up MetaMask.
-- You need to acquire tokens on a CEX and transfer them to your wallet.
-- You need to connect your wallet and sign in on Dapps.
+For Token Sender: 
+To distribute tokens to your friends, you need to ask for their wallet addresses
+,as their accounts are not linked to their wallet addresses.
+
+For token receiver
+There is not enough incentive to start crypto.
+It is so difficult to start crypto for non-wallet 
+holders, as they have to set up meatamask, to get token from CEX.
 
 ## Solution
+User can send token to non-wallet holder ,without knowing friend's wallet
+address or ens address.
 
-- Easy login using Google authentication or similar methods
-- Transactions without the need for gas fees
-- A situation where there is no need to manage private keys
+User can start crypto just pushing login button, getting access right of the token inside.
+user don't have to manage private keys.
 
 ### Architecture
 
-- By using Google Auth for login, we automatically provide users with an Account Abstraction Wallet, making it easy to obtain a wallet. Users can acquire NFTs and FTs with a single click, even if they don't have a wallet.
-- During this process, users don't have to pay gas fees due to gasless transactions, and since the tokens have gone through a community audit, there is less concern about receiving scam tokens.
-- Companies that want to expand their community can propose detailed information about airdrop in a proposal, which will help them learn whether a token airdrop is feasible or not.
+Using create2( ERC 1014), Token Sender can find out which address will be deployed for the receiver.
+The token Receiver will know the token was sent to his/her wallet, by the twitter notification.
+The sender can send Name Service (ERC 721 that has resolver & record function ) as a gift.
+The Receiver will push claim token button & deploy his/her contract wallet(ERC4337)
+
 
 
 ### Unique Point
 
-AirdropDAO can onboard web2 users who doesn't have crypto wallet yet.
-the airdropped token is selected by community, using UMA,snapshot voting,called oSnap.
+PPwallet is unique as non-wallet holder can use this service.
+And we prepared Name Server NFT as a gift, this kind of onboarding way is unique as well.
 
 
 ## User Flow
 
-１. Visit website.
-２. Authenticate some social
-３. Push mint button to get some FT or NFT
-
+１. Search friend's Twitter ID, then know the address to send.
+２. Send tip to the address.
+３. Push gift button (optional)
+４. Receiver knows the token was sent via Twitter.
+５. Receiver will claim token ,deploying the contract wallet.
+(the gas fee was paid by us ,so user can start crypto without knowing about deployment.)
 
 ## Future Work
-1.Realize sybil attack resistance, selecting some ID solution.
-2.We will start advertisement function for the company that want to sell some product and for users that want to trade without paying gas.
-3.Find ecosystem partners.
+１. Improve the retention mechanism to allow for a share tweet with a mention to 
+the target Twitter account when a token is sent.
+２. Development of distribution support tools. Provide a system that makes it easy
+ to manage Twitter followers and send to many users at once when distributing NFTs. This can be used in collaborations with companies.
+３.Integration with DEX and NFT marketplaces, etc.
+
 
 ## TechStack
 
 | Title | Usage |
 | --- | --- |
-| Account Abstraction |  To provide users with a no-cost gas experience |
-| Airstack | To obtain past Mint information and provide a safe and secure experience for users |
-| UMA |  To implement a campaign to Giveaway safer and more secure NFTs through consensus on the use of OnSnap. |
-| SnapShot |  Same as above |
-| OpenAI |  To produce a unique and interesting NFT |
-| Hardhat |  To implement the contract productively |
-| Web3Auth |  To provide a smooth experience by not requiring users to have a private key through social authentication |
+| Account Abstraction |  To deploy contract wallet, providing users with a no-cost gas experience |
+| create2 | To know which address should be deployed |
+| NFT |  To implement a campaign to Giveaway safer and more secure NFTs through consensus on the use of OnSnap. |
+
 
 ## Deployed contract
 
@@ -73,16 +85,12 @@ the airdropped token is selected by community, using UMA,snapshot voting,called 
 
 | contract | contract address |
 | --- | --- |
-| ERC721 | 0x981116f806898F1C1eCB1d3BF2AF4f2140B1BB92 |
-
-### VotingSynstem
-
-| contract | contract address |
-| --- | --- |
-| SnapShot(OnSnap) | https://demo.snapshot.org/#/libdefi.eth/proposal/0xa8f965308af64f33e300cc7091171e36d12ab726bc5455ae2d02cd8ad4c3daa9 |
-| UMA | https://goerli.etherscan.io/address/0xDAd843F42Ad405c44c1D9B17f530CB1a6Cbdabf0  |
+| Ninja Name Service (NNS)| 0x981116f806898F1C1eCB1d3BF2AF4f2140B1BB92 |
+|PPAccountFactory|0x5d9b258Dc16dB1aEf7250cBb9dBc8A47420CA484|
 
 ## Others
 
 ### The repo of Generative AI NFT
 https://github.com/AAAirdropper/ETHGlobalTokyoNFT
+
+
