@@ -7,7 +7,7 @@ import abi from "../abi/IDomains.json";
 export const makeNameDomainContract = () => {
   const contractAddress = "0x9B45eaFd7FC6207c1cCBaaE3b75EB616988bEAa0";
   const privateKey = process.env.REACT_APP_PRIVATE_KEY;
-  const providerUrl = process.env.REACT_APP_POLYGON_PROVIDER_URL;
+  const providerUrl = process.env.REACT_APP_MUMBAI_PROVIDER_URL;
 
   const hdWalletProvider = new HDWalletProvider({
     privateKeys: [privateKey as string],

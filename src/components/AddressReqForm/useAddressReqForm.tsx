@@ -1,13 +1,15 @@
 import { ChangeEvent, useState } from "react";
 import { makeAccountFactoryContract } from "../../utils/accountFactory";
+import { setTokenSourceMapRange } from "typescript";
 
 type UseAddressReqFormParams = {
   address: string;
   setAddress: React.Dispatch<React.SetStateAction<string>>;
   setTwitterId: React.Dispatch<React.SetStateAction<string>>;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const useAddressReqForm = ({address, setAddress, setTwitterId}: UseAddressReqFormParams) => {
+export const useAddressReqForm = ({address, setAddress, setTwitterId, setStep}: UseAddressReqFormParams) => {
 
     const [inputValue, setInputValue] = useState<string>('');
     console.log(inputValue);
@@ -26,6 +28,7 @@ export const useAddressReqForm = ({address, setAddress, setTwitterId}: UseAddres
     setTwitterId(inputValue)
     console.log(address);
     setAddress(address);
+    setStep(2);
     return 'resolved';
   }
 

@@ -9,20 +9,20 @@ function App() {
   const [step, setStep] = useState(1);
   const [address, setAddress] = useState('');
   const [twitterId, setTwitterId] = useState<string>('');
-  const titles = ['REQUEST ADDRESS', 'Register Domain', 'Complete'];
+  const titles = ["Search Friend's Account", 'Give Him/Her Domain NFT', 'Complete'];
   
   return (
     <div className="bg-neutral min-h-screen flex flex-col items-center">
       <div className="navbar bg-base-100 flex justify-center">
         <div>
-          <img className="max-h-10" src="/twilight-logo.png" alt="twilight"/>
+          <img className="max-h-10" src="/ppw-logo.png" alt="twilight"/>
         </div>
         <div>
           <a
-            className="btn btn-ghost normal-case text-2xl text-primary"
+            className="btn btn-ghost normal-case text-2xl text-primary pl-0"
             href="/"
           >
-            Twilight
+            PPWallet
           </a>
         </div>
       </div>
