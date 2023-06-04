@@ -23,7 +23,7 @@ export const useAddressReqForm = ({address, setAddress, setTwitterId, setStep}: 
   const handleClick = async() => {
     const {contract} = makeAccountFactoryContract();
     console.log(inputValue);
-    const address = await contract.methods.getAddress('0xa4E1040705Cb9434D97A295079fe0442eE571456', inputValue).call();
+    const address = await contract.methods.getAddress('0xa4E1040705Cb9434D97A295079fe0442eE571456', inputValue, 'twitter').call();
     console.log(inputValue);
     setTwitterId(inputValue)
     console.log(address);
