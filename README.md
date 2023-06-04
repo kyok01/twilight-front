@@ -1,46 +1,92 @@
-# Getting Started with Create React App
+![logo](docs/PPWallet.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PPwallet - Account Abstraction Wallet to realize permissonless Payment
 
-## Available Scripts
+## Summary
+PPWallet will onboard next 400 million people.
+We enable crypto-users to pay non-wallet holder token.
+We prepared Name Server as a gift towards non-crypto users.
 
-In the project directory, you can run:
 
-### `yarn start`
+Presentatitoon  movie:
+youtube:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Only demo(movie):
+https://www.loom.com/share/f8f86d68c06d4b2fbbf0b0399d09e689 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Problem
 
-### `yarn build`
+Overall Issue: Existing crypto transactions are limited to wallet holders 
+such as those with Metamask.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For Token Sender: 
+To distribute tokens to your friends, you need to ask for their wallet addresses
+,as their accounts are not linked to their wallet addresses.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For token receiver
+There is not enough incentive to start crypto.
+It is so difficult to start crypto for non-wallet 
+holders, as they have to set up meatamask, to get token from CEX.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Solution
+User can send token to non-wallet holder ,without knowing friend's wallet
+address or ens address.
 
-### `yarn eject`
+User can start crypto just pushing login button, getting access right of the token inside.
+user don't have to manage private keys.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Architecture
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Using create2( ERC 1014), Token Sender can find out which address will be deployed for the receiver.
+The token Receiver will know the token was sent to his/her wallet, by the twitter notification.
+The sender can send Name Service (ERC 721 that has resolver & record function ) as a gift.
+The Receiver will push claim token button & deploy his/her contract wallet(ERC4337)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Unique Point
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+PPwallet is unique as non-wallet holder can use this service.
+And we prepared Name Server NFT as a gift, this kind of onboarding way is unique as well.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## User Flow
+
+１. Search friend's Twitter ID, then know the address to send.
+２. Send tip to the address.
+３. Push gift button (optional)
+４. Receiver knows the token was sent via Twitter.
+５. Receiver will claim token ,deploying the contract wallet.
+(the gas fee was paid by us ,so user can start crypto without knowing about deployment.)
+
+## Future Work
+１. Improve the retention mechanism to allow for a share tweet with a mention to 
+the target Twitter account when a token is sent.
+２. Development of distribution support tools. Provide a system that makes it easy
+ to manage Twitter followers and send to many users at once when distributing NFTs. This can be used in collaborations with companies.
+３.Integration with DEX and NFT marketplaces, etc.
+
+
+## TechStack
+
+| Title | Usage |
+| --- | --- |
+| Account Abstraction |  To deploy contract wallet, providing users with a no-cost gas experience |
+| create2 | To know which address should be deployed |
+| NFT |  To implement a campaign to Giveaway safer and more secure NFTs through consensus on the use of OnSnap. |
+
+
+## Deployed contract
+
+### Polygon
+
+| contract | contract address |
+| --- | --- |
+| Name Service (NNS)| 0x5d9b258Dc16dB1aEf7250cBb9dBc8A47420CA484 |
+|PPAccountFactory|https://mumbai.polygonscan.com/address/0x5d9b258Dc16dB1aEf7250cBb9dBc8A47420CA484#code
+## Others
+
+### The repo of Generative AI NFT
+https://github.com/kyok01/twilight-front/tree/master　
