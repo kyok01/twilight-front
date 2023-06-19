@@ -23,7 +23,7 @@ export const AddressReqForm: React.FC<AddressReqFormProp> = memo(
             value={inputValue}
             onChange={(e) => handleChange(e)}
             type="text"
-            placeholder="Type here"
+            placeholder="@example"
             className="input input-bordered input-primary w-full max-w-xs"
           />
           <button className="btn btn-primary" onClick={() => handleClick()}>
