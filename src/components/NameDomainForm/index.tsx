@@ -29,22 +29,43 @@ export const NameDomainForm: React.FC<NameDomainFormProp> = memo(
 
     const domain = `${twitterId.slice(1)}.ppw`;
 
+    // const handleClick = async () => {
+    //   const { contract, web3 } = makeNameDomainContract();
+    //   const fee = await contract.methods.price(domain).call();
+    //   console.log(fee);
+    //   const myAddress = await web3.eth.getAccounts();
+    //   console.log(myAddress);
+    //   //TODO: polygon gas station
+    //   await contract.methods.register(domain).send({
+    //     from: myAddress[0],
+    //     value: fee,
+    //     maxPriorityFeePerGas: web3.utils.toWei("3", "gwei"),
+    //     maxFeePerGas: web3.utils.toWei("3", "gwei"),
+    //   });
+    //   setStep(3);
+    //   return "resolved";
+    // };
     const handleClick = async () => {
-      const { contract, web3 } = makeNameDomainContract();
-      const fee = await contract.methods.price(domain).call();
-      console.log(fee);
-      const myAddress = await web3.eth.getAccounts();
-      console.log(myAddress);
-      //TODO: polygon gas station
-      await contract.methods.register(domain).send({
-        from: myAddress[0],
-        value: fee,
-        maxPriorityFeePerGas: web3.utils.toWei("3", "gwei"),
-        maxFeePerGas: web3.utils.toWei("3", "gwei"),
-      });
-      setStep(3);
-      return "resolved";
-    };
+        try {
+          const { contract, web3 } = makeNameDomainContract();
+          const fee = await contract.methods.price(domain).call();
+          console.log(fee);
+          const myAddress = await web3.eth.getAccounts();
+          console.log(myAddress);
+          //TODO: polygon gas station
+          await contract.methods.register(domain).send({
+            from: myAddress[0],
+            value: fee,
+            maxPriorityFeePerGas: web3.utils.toWei("3", "gwei"),
+            maxFeePerGas: web3.utils.toWei("3", "gwei"),
+          });
+          setStep(3);
+          return "resolved";
+        } catch (error) {
+          console.error("Error during domain registration:", error);
+          return "rejected";
+        }
+      };
 
     const connectMetamask = async () => {
       const provider = await detectEthereumProvider({ mustBeMetaMask: true });
