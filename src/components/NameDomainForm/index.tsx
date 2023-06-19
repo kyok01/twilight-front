@@ -28,6 +28,7 @@ export const NameDomainForm: React.FC<NameDomainFormProp> = memo(
     const [account, setAccount] = useState<AccountType>(null);
 
     const domain = `${twitterId.slice(1)}.ppw`;
+
     const handleClick = async () => {
       const { contract, web3 } = makeNameDomainContract();
       const fee = await contract.methods.price(domain).call();
@@ -45,53 +46,36 @@ export const NameDomainForm: React.FC<NameDomainFormProp> = memo(
       return "resolved";
     };
 
-// メタマスクと接続する関数
-const connectMetamask = async () => {
-  // メタマスクがインストールされているかどうかを検出
-  const provider = await detectEthereumProvider({ mustBeMetaMask: true });
-  if (provider && window.ethereum) {
-    // Web3オブジェクトを作成
-    const web3 = new Web3(Web3.givenProvider);
-    // アカウントのアクセス許可を要求
-    const accounts = await web3.eth.requestAccounts();
-    // ステートにセット
-    setWeb3(web3);
-    setAccount(accounts[0]);
-  } else {
-    alert('メタマスクがインストールされていません');
-  }
-};
-
-// 送金する関数
-const sendTransaction = async () => {
-  if (web3 && account) {
-    // 送金先のアドレス（適当に変えてください）
-    const toAddress = address;
-    // 送金額（wei単位）
-    const value = web3.utils.toWei('0.01', 'ether');
-    // トランザクションのパラメータ
-    const txParams = {
-      from: account,
-      to: toAddress,
-      value: value,
-      gas: 21000,
-      maxPriorityFeePerGas: undefined,
-      maxFeePerGas: undefined,
+    const connectMetamask = async () => {
+      const provider = await detectEthereumProvider({ mustBeMetaMask: true });
+      if (provider && window.ethereum) {
+        const web3 = new Web3(Web3.givenProvider);
+        const accounts = await web3.eth.requestAccounts();
+        setWeb3(web3);
+        setAccount(accounts[0]);
+      } else {
+        alert('メタマスクがインストールされていません');
+      }
     };
-    // トランザクションの作成
-    const txHash = await web3.eth.sendTransaction(txParams);
-    // トランザクションハッシュを表示
-    alert(`トランザクションハッシュ: ${txHash}`);
-  } else {
-    alert('メタマスクに接続してください');
-  }
-};
 
-const sendChip = async() => {
-  await connectMetamask();
-  await sendTransaction();
-  return 'resolved'
-}
+    const sendTransaction = async () => {
+      if (web3 && account) {
+        const toAddress = address;
+        const value = web3.utils.toWei('0.01', 'ether');
+        const txParams = {
+          from: account,
+          to: toAddress,
+          value: value,
+          gas: 21000,
+          maxPriorityFeePerGas: undefined,
+          maxFeePerGas: undefined,
+        };
+        const txHash = await web3.eth.sendTransaction(txParams);
+        alert(`トランザクションハッシュ: ${txHash}`);
+      } else {
+        alert('メタマスクに接続してください');
+      }
+    };
 
     return (
       <div className="flex flex-col justify-center gap-y-6 items-center">
@@ -108,8 +92,11 @@ const sendChip = async() => {
             </a>
           </div>
         </div>
-        <button className="btn btn-secondary" onClick={() => sendChip()}>
-          Connect Wallet And Send 0.01MATIC Chip
+        <button className="btn btn-primary" onClick={() => connectMetamask()}>
+          Connect Wallet
+        </button>
+        <button className="btn btn-secondary" onClick={() => sendTransaction()}>
+          Send 0.01MATIC Chip
         </button>
         <div className="flex justify-center gap-x-6 items-center">
           <div className="text-accent text-xl underline">{domain}</div>
@@ -121,3 +108,4 @@ const sendChip = async() => {
     );
   }
 );
+
